@@ -84,4 +84,21 @@ feature 'Visitor create regular user' do
     #Expectativa
     expect(page).to have_css('li', text: 'Email has already been taken')
   end
+
+  scenario 'and define gym manager' do
+    visit root_path
+    click_on 'Create User'
+
+    fill_in 'Email', with: 'teste@gmail.com'
+    fill_in 'Name', with: 'João da Silva'
+    fill_in 'Password', with: '123456'
+    fill_in 'Password confirmation', with: '123456'
+    check('Gym manager')
+
+    click_on 'Sign up'
+
+    #Expectativa
+    expect(current_path).to eq(root_path)
+    expect(page).to have_css('p', text: 'Welcome! You have signed up successfully.')
+  end
 end
