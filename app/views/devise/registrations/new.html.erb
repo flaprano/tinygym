@@ -31,6 +31,26 @@
     <%= f.check_box :gym_manager %>
   </div>
 
+  <p>Addresses:</p>
+  <%= f.fields_for :addresses do |af| %>
+  <br>
+    <div class="field">
+      <%= af.label :address_type %>
+      <%= af.text_field :address_type %>
+    </div>
+
+    <div class="field">
+      <%= af.label :latitude %>
+      <%= af.text_field :latitude %>
+    </div>
+
+    <div class="field">
+      <%= af.label :longitude %>
+      <%= af.text_field :longitude %>
+    </div>
+  <% end %>
+  <br>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
