@@ -4,18 +4,16 @@ class GymsController < ApplicationController
         @user = current_user
         @gym = Gym.new
         @gym.build_address
-        #byebug
-        #1.times(@gym.address.build)
     end
 
     def create
         @user = current_user
-        @user.gym.create(gym_params)
-        redirect_to @user.gym.first
+        @user.gym = Gym.create(gym_params)
+        redirect_to @user.gym
     end
 
     def show
-        @user.gyms
+        @user.gym
     end
     
     private
