@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, onchange: "if (/^([A-Za-z0-9_\\-\\.])+\@([gympass|GYMPASS])+\\.(com)$/.test($(\'#user_email\').val())) $(\'#user_gym_manager\').prop('disabled', true); else $(\'#user_gym_manager\').prop('disabled', false);" %>
   </div>
 
   <div class="field">
@@ -27,12 +27,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :gym_manager %><br />
     <%= f.check_box :gym_manager %>
+    <%= f.label :gym_manager, 'Gym Manager?' %>
   </div>
 
   <p>Addresses:</p>
-  <%= f.fields_for :addresses do |af| %>
+  <%= f.nested_fields_for :addresses do |af| %>
   <br>
     <div class="field">
       <%= af.label :address_type %>
@@ -49,7 +49,8 @@
       <%= af.text_field :longitude %>
     </div>
   <% end %>
-  <br>
+
+  <%= f.add_nested_fields_link :addresses %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

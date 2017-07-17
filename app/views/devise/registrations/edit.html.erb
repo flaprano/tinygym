@@ -5,7 +5,12 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, disabled: 'disabled' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -30,6 +35,30 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+
+  <div class="field">
+    <%= f.label :gym_manager, 'Gym Manager?' %><br />
+    <%= f.check_box :gym_manager, disabled: 'disabled' %>
+  </div>
+
+  <p>Addresses:</p>
+  <%= f.nested_fields_for :addresses do |af| %>
+  <br>
+    <div class="field">
+      <%= af.label :address_type %>
+      <%= af.text_field :address_type %>
+    </div>
+
+    <div class="field">
+      <%= af.label :latitude %>
+      <%= af.text_field :latitude %>
+    </div>
+
+    <div class="field">
+      <%= af.label :longitude %>
+      <%= af.text_field :longitude %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

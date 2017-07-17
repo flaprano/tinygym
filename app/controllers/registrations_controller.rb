@@ -2,16 +2,15 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @user = User.new
-    2.times {@user.addresses.build}
+    1.times{@user.addresses.build}
   end
 
   def create
     @user = User.new(sign_up_params)
-    if verify_addresses_count(@user.addresses) >= 1
+    if addresses_count(@user.addresses) >= 1
       if @user.save
         sign_in(@user, scope: :user)
         redirect_to root_path
-        byebug
       else
         render :new
       end
@@ -20,18 +19,22 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def edit
+    @user = current_user
+    1.times{@user.addresses.build}
+  end
+
   private
 
-  def verify_addresses_count(addresses)
-    if addresses[0].address_type.nil? or addresses[0].latitude.nil? or addresses[0].longitude.nil?
-      return 0
+  def addresses_count(addresses)
+    addresses_count = 0
+    addresses.each do |address|
+      unless address.address_type.empty? and address.latitude.empty? and address.longitude.empty?
+        addresses_count += 1
+      end
     end
 
-    if addresses[1].address_type.nil? or addresses[1].latitude.nil? or addresses[1].longitude.nil?
-      return 1
-    end
-
-    return 2
+    return addresses_count
   end
 
   def sign_up_params
