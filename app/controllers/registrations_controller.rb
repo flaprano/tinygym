@@ -7,7 +7,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    if addresses_count(@user.addresses) >= 1
+    gym_manager_save = (addresses_count(@user.addresses) == 1 and @user.gym_manager?)
+    regular_user_save = (addresses_count(@user.addresses) >= 2 and @user.gym_manager? == false)
+    if gym_manager_save or regular_user_save
       if @user.save
         sign_in(@user, scope: :user)
         redirect_to root_path

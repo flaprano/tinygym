@@ -91,6 +91,8 @@ feature 'Visitor create regular user' do
 
     sign_out :user
 
+    visit root_path
+
     click_on 'Create User'
 
     fill_in 'Email', with: 'teste@gmail.com'
