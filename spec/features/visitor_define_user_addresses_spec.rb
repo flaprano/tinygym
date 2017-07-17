@@ -41,8 +41,10 @@ feature 'User define addresses' do
     fill_in 'user_addresses_attributes_0_longitude', with: '-46.7490466'
 
     click_on 'Sign up'
-
+    
+    visit root_path
+    
     #Expectativa
-    expect(current_path).to eq(users_path)
+    expect(current_path).to eq(root_path)
   end
 end

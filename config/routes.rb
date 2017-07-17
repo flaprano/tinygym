@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users do
-    resources :gyms
+  resources :users, only: [] do
+    resources :gyms, only: [:new, :create, :show]
   end
 
 end
