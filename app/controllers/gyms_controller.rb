@@ -8,12 +8,14 @@ class GymsController < ApplicationController
 
     def create
         @user = current_user
-        @user.gym = Gym.create(gym_params)
-        redirect_to @user.gym
+        @gym = Gym.create(gym_params)
+        @user.gym = @gym
+        redirect_to user_gym_path(@user, @gym)
     end
 
     def show
-        @user.gym
+        @user = User.find(params[:user_id])
+        @gym = @user.gym
     end
     
     private
