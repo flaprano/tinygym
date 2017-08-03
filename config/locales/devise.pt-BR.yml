@@ -25,6 +25,8 @@ pt-BR:
         unconfirmed_email: 
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
+        name: Nome
+        gym_manager: Gerente de Academia
     models:
       user: Usuário
   devise:
