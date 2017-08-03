@@ -13,7 +13,7 @@
     <p class="alert"><%= alert %></p>
 
     <% if user_signed_in? %>
-      <% if current_user.email.include? 'gympass.com' %>
+      <% if current_user.email.downcase.include? 'gympass.com' %>
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
         <%= link_to 'My Gyms', user_gyms_path(current_user) %>
         <%= link_to 'My Daily Tokens', user_daily_tokens_path(current_user) %> 
