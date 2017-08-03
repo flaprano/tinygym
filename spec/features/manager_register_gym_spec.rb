@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-feature 'Manager register gym' do
+feature 'Gym manager register gym' do
   scenario 'successfully' do
     #Dados
+    user = FactoryGirl.create(:user)
 
+    
     #Naveggação
 
     #Expectativa

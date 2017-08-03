@@ -9,8 +9,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <% if user_signed_in? %>
       <% if current_user.gym_manager? %>
@@ -22,7 +26,7 @@
       <%= link_to 'Create User', new_user_registration_path %>
       <%= link_to 'Sign In', new_user_session_path %>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>
