@@ -36,11 +36,11 @@ class RegistrationsController < Devise::RegistrationsController
 
     return addresses_count
   end
-  
+
   def gym_manager_save?
     (addresses_count(@user.addresses) >= 1 and @user.gym_manager?)
   end
-  
+
   def regular_user_save?
     (addresses_count(@user.addresses) >= 2 and @user.gym_manager? == false)
   end
@@ -51,7 +51,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :gym_manager,
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :name, :gym_manager,
       addresses_attributes: [:id, :address_type, :latitude, :longitude])
   end
 end

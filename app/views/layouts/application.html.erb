@@ -15,25 +15,17 @@
     <% if user_signed_in? %>
       <% if current_user.email.downcase.include? 'gympass.com' %>
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
-        <%= link_to 'My Gyms', user_gyms_path(current_user) %>
-        <%= link_to 'My Daily Tokens', user_daily_tokens_path(current_user) %> 
-        <%= link_to 'Gyms', gyms_path %>
-        <%= link_to 'Retrieve Daily Token', new_daily_token %>
       <% elsif current_user.gym_manager? %>
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
-        <%= link_to 'My Gyms', user_gyms_path(current_user) %>
-        <%= link_to 'My Daily Tokens', user_daily_tokens_path(current_user) %> 
-      <% ese %>
-        <%= link_to 'Gyms', gyms_path %>
-        <%= link_to 'Retrieve Daily Token', new_daily_token %>
       <% end %>
+      <%= link_to 'Gyms', gyms_path %>
       <%= link_to 'Edit User', edit_user_registration_path %>
       <%= link_to 'Sign Out', destroy_user_session_path %>
     <% else %>
       <%= link_to 'Create User', new_user_registration_path %>
       <%= link_to 'Sign In', new_user_session_path %>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>
