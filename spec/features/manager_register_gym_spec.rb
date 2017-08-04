@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Manager register gym' do
   scenario 'successfully' do
     #Dados
-    byebug
+
     address = create(:user_address)
     user = address.model
     user.gym_manager = true

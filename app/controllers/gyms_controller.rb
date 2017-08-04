@@ -19,7 +19,17 @@ class GymsController < ApplicationController
   end
 
   def index
-    @gyms = Gym.near(current_user.addresses[0].address, 20)
+    #@gyms = Gym.all.near(current_user.addresses[0].address, 20)
+    @gyms = []
+    addresses = Address.near(current_user.addresses[0].address).where("model_type = 'Gym'")
+    addresses.each do |address|
+      @gyms << Gym.find(address.model_id)
+    end
+    
+    #@gyms.each do |gym|
+    # gym.address.near(User.find(3).addresses[0].address, 20)
+    #addresses = Address.near(user.addresses[0].address).where("model_type = 'Gym'")
+    #end
   end
 
   private

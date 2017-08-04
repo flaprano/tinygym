@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/flaprano/Documentos/gymtoy/app/models/user.rb": [
+      "/home/ubuntu/workspace/app/models/user.rb": [
         1,
         null,
         null,
@@ -13,33 +13,33 @@
         1,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/models/application_record.rb": [
+      "/home/ubuntu/workspace/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/models/address.rb": [
+      "/home/ubuntu/workspace/app/models/address.rb": [
         1,
         1,
         null,
-        1,
-        1,
-        null
-      ],
-      "/home/flaprano/Documentos/gymtoy/app/models/gym.rb": [
-        1,
-        1,
-        null,
-        1,
         1,
         1,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/controllers/home_controller.rb": [
+      "/home/ubuntu/workspace/app/models/gym.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/app/controllers/home_controller.rb": [
         1,
         null,
         1,
@@ -47,12 +47,12 @@
         null,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/controllers/gyms_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/gyms_controller.rb": [
         1,
         null,
         1,
@@ -74,7 +74,17 @@
         null,
         null,
         1,
+        null,
         1,
+        1,
+        1,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         1,
@@ -86,7 +96,7 @@
         null,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/controllers/registrations_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/registrations_controller.rb": [
         1,
         null,
         1,
@@ -145,13 +155,13 @@
         null,
         null
       ],
-      "/home/flaprano/Documentos/gymtoy/app/mailers/application_mailer.rb": [
+      "/home/ubuntu/workspace/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1501809729
+    "timestamp": 1501849144
   }
 }
