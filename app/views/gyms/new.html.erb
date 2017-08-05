@@ -1,0 +1,42 @@
+<h2>Register new gym</h2>
+
+<%= form_for [@user, @gym] do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <p>Addresses:</p>
+  <%= f.fields_for :address, @gym.address do |af| %>
+  <br>
+    <div class="field">
+      <%= af.label :address_type %>
+      <%= af.text_field :address_type %>
+    </div>
+
+    <div class="field">
+      <%= af.label :latitude %>
+      <%= af.text_field :latitude %>
+    </div>
+
+    <div class="field">
+      <%= af.label :longitude %>
+      <%= af.text_field :longitude %>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :opening_time %><br />
+    <%= f.time_field :opening_time, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :closing_time %><br />
+    <%= f.time_field :closing_time, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Register" %>
+  </div>
+<% end %>

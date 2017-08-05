@@ -17,9 +17,12 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <% if current_user.gym_manager? %>
+      <% if current_user.email.downcase.include? 'gympass.com' %>
+        <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
+      <% elsif current_user.gym_manager? %>
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
       <% end %>
+      <%= link_to 'Gyms', gyms_path %>
       <%= link_to 'Edit User', edit_user_registration_path %>
       <%= link_to 'Sign Out', destroy_user_session_path %>
     <% else %>

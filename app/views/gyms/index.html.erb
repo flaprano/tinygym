@@ -1,0 +1,7 @@
+<% @gyms.each do |gym| %>
+  <ul>
+    <li>Nome: <%= gym.name %></li>
+    <li>Latitude: <%= gym.address.latitude %></li>
+    <li>Longitude: <%= gym.address.longitude %></li>
+  </ul>
+<% end %>

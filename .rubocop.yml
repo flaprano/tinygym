@@ -1,0 +1,31 @@
+Documentation:
+  Enabled: false
+Rails:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 70
+  Exclude:
+    - 'spec/**/*'
+Metrics/AbcSize:
+   Enabled: false
+Metrics/LineLength:
+  Max: 95
+MethodLength:
+    Max: 35
+AllCops:
+  TargetRubyVersion: 2.4
+  CacheRootDirectory: 'tmp/.cache/rubocop-cache/'
+  Include:
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/rails_helper.rb'
+    -  'coverage'
