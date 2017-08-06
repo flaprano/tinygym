@@ -18,7 +18,7 @@ class GymsController < ApplicationController
   end
 
   def index
-    @gyms = Array.new
+    @gyms = []
     @addresses = current_user.addresses
 
     if params[:address]
@@ -33,13 +33,11 @@ class GymsController < ApplicationController
 
     addresses = Address.near(address, 20).where("model_type = 'Gym'")
 
-    addresses.each do |address|
-      @gyms << Gym.find(address.model_id)
+    addresses.each do |ad|
+      @gyms << Gym.find(ad.model_id)
     end
 
-    if @gyms.empty?
-      flash[:alert] = 'There is no gym around you'
-    end
+    flash[:alert] = 'There is no gym around you' if @gyms.empty?
   end
 
   private

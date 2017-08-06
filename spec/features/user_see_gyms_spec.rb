@@ -17,23 +17,21 @@ feature 'User see list of gyms' do
     expect(page).to have_css('li', text: gym1.name)
     expect(page).to have_css('li', text: gym1.address.latitude)
     expect(page).to have_css('li', text: gym1.address.longitude)
-    expect(page).to have_css('li', text: gym1.opening_time.strftime("%H:%M"))
-    expect(page).to have_css('li', text: gym1.closing_time.strftime("%H:%M"))
+    expect(page).to have_css('li', text: gym1.opening_time.strftime('%H:%M'))
+    expect(page).to have_css('li', text: gym1.closing_time.strftime('%H:%M'))
     expect(page).to have_css('li', text: gym2.name)
     expect(page).to have_css('li', text: gym2.address.latitude)
     expect(page).to have_css('li', text: gym2.address.longitude)
-    expect(page).to have_css('li', text: gym2.opening_time.strftime("%H:%M"))
-    expect(page).to have_css('li', text: gym2.closing_time.strftime("%H:%M"))
+    expect(page).to have_css('li', text: gym2.opening_time.strftime('%H:%M'))
+    expect(page).to have_css('li', text: gym2.closing_time.strftime('%H:%M'))
   end
 
   scenario 'and have no gym around' do
     user_address = create(:user_address, latitude: -40.741895, longitude: -73.989308)
     user = user_address.model
     user.gym_manager = true
-    gym1_address = create(:gym_address)
-    gym1 = gym1_address.model
-    gym2_address = create(:gym_address, latitude: -23.543586, longitude: -46.736859)
-    gym2 = gym2_address.model
+    create(:gym_address)
+    create(:gym_address, latitude: -23.543586, longitude: -46.736859)
 
     login_as(user)
     visit root_path
@@ -69,10 +67,8 @@ feature 'User see list of gyms' do
     user_address = create(:user_address, latitude: -24.543586, longitude: -47.606869)
     user = user_address.model
     user.gym_manager = true
-    gym1_address = create(:gym_address, latitude: -23.543586, longitude: -46.736859)
-    gym1 = gym1_address.model
-    gym2_address = create(:gym_address, latitude: -40.741895, longitude: -73.989308)
-    gym2 = gym2_address.model
+    create(:gym_address, latitude: -23.543586, longitude: -46.736859)
+    create(:gym_address, latitude: -40.741895, longitude: -73.989308)
 
     login_as(user)
     visit root_path
@@ -110,10 +106,8 @@ feature 'User see list of gyms' do
     user_address = create(:user_address)
     user = user_address.model
     user.gym_manager = true
-    gym1_address = create(:gym_address, latitude: -23.543586, longitude: -46.736859)
-    gym1 = gym1_address.model
-    gym2_address = create(:gym_address, latitude: -40.741895, longitude: -73.989308)
-    gym2 = gym2_address.model
+    create(:gym_address, latitude: -23.543586, longitude: -46.736859)
+    create(:gym_address, latitude: -40.741895, longitude: -73.989308)
 
     login_as(user)
     visit root_path

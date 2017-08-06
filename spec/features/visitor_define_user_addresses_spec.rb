@@ -28,7 +28,7 @@ feature 'User define addresses' do
     fill_in 'user_addresses_attributes_0_latitude', with: '-23.3139522'
     fill_in 'user_addresses_attributes_0_longitude', with: '-46.7490466'
     click_on 'Sign up'
-    
+
     expect(current_path).to eq('/users')
   end
 end

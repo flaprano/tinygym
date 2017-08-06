@@ -7,7 +7,5 @@ Rails.application.routes.draw do
     resources :gyms, only: [:new, :create, :show, :index]
   end
 
-  resources :gyms, only: [:index]# do
-    #get 'filtered', on: :collection
-  #end
+  resources :gyms, only: [:index]
 end
