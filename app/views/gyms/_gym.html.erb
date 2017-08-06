@@ -1,5 +1,5 @@
 <ul>
-  <li>Name: <%= gym.name %></li>
+  <li>Name: <%= link_to gym.name, gym %></li>
   <li>Latitude: <%= gym.address.latitude %></li>
   <li>Longitude: <%= gym.address.longitude %></li>
   <li>Opening Time: <%= gym.opening_time.strftime("%H:%M") %></li>

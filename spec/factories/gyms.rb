@@ -3,6 +3,7 @@ FactoryGirl.define do
     name
     opening_time '2017-07-16 09:00:00'
     closing_time '2017-07-16 23:00:00'
+    approved false
     user
   end
 

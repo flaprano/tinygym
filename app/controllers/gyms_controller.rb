@@ -1,4 +1,6 @@
 class GymsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create show index]
+
   def new
     @user = current_user
     @gym = Gym.new
@@ -9,12 +11,11 @@ class GymsController < ApplicationController
     @user = current_user
     @gym = Gym.create(gym_params)
     @user.gym = @gym
-    redirect_to user_gym_path(@user, @gym)
+    redirect_to @gym
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @gym = @user.gym
+    @gym = Gym.find(params[:id])
   end
 
   def index
@@ -38,6 +39,16 @@ class GymsController < ApplicationController
     end
 
     flash[:alert] = 'There is no gym around you' if @gyms.empty?
+  end
+
+  def approve
+    @gym = Gym.find(params[:id])
+    @gym.approved = true
+    @gym.save
+
+    flash[:notice] = 'Gym Approved'
+    GymMailer.notify_gym_approved(@gym).deliver_now
+    redirect_to @gym
   end
 
   private

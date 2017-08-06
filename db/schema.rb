@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804011614) do
+ActiveRecord::Schema.define(version: 20170806022503) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "model_type"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170804011614) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approved", default: false, null: false
     t.index ["name"], name: "index_gyms_on_name", unique: true
     t.index ["user_id"], name: "index_gyms_on_user_id"
   end

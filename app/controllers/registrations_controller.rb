@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_user!, only: %i[edit]
+
   def new
     @user = User.new
     1.times { @user.addresses.build }

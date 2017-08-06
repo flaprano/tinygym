@@ -1,1 +1,7 @@
 <h1><%= @gym.name %></h1>
+
+<% unless @gym.approved? %>
+  <% if current_user.email.include? 'gympass.com' %>
+    <%= link_to 'Approve Gym', approve_gym_path, method: :patch %>
+  <% end %>
+<% end %>
