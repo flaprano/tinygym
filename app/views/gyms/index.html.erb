@@ -1,7 +1,7 @@
+<%= render 'filter_address' %>
+
+<%= render 'filter_location' %>
+
 <% @gyms.each do |gym| %>
-  <ul>
-    <li>Nome: <%= gym.name %></li>
-    <li>Latitude: <%= gym.address.latitude %></li>
-    <li>Longitude: <%= gym.address.longitude %></li>
-  </ul>
+  <%= render gym %>
 <% end %>

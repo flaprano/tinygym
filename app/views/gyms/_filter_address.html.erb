@@ -1,0 +1,5 @@
+<%= form_tag(gyms_path, method: :get) do %>
+  <%= label_tag :address, 'My Addresses' %>
+  <%= select_tag :address, options_from_collection_for_select(@addresses,'id', 'address_type'), prompt: 'Select address' %>
+  <%= submit_tag 'Filter by address' %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_tag(gyms_path, method: :get) do %>
+  <%= label_tag :location, 'Location by Latitude,Longitude' %>
+  <%= text_field_tag :location %>
+  <%= submit_tag 'Filter by location' %>
+<% end %>
