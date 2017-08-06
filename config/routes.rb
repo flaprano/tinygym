@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :gyms, only: [:new, :create]
   end
 
-  resources :gyms, only: [:index, :show] do
+  get 'my_gyms', to: 'gyms#my_gyms'
+  resources :gyms, only: [:index, :show, :destroy] do
+    get 'disapproved', on: :collection
     patch 'approve', on: :member
   end
 end

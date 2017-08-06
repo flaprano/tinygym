@@ -8,9 +8,9 @@ class GymsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @gym = Gym.create(gym_params)
-    @user.gym = @gym
+    @gym = Gym.new(gym_params)
+    @gym.user = current_user
+    @gym.save
     redirect_to @gym
   end
 
@@ -41,6 +41,10 @@ class GymsController < ApplicationController
     flash[:alert] = 'There is no gym around you' if @gyms.empty?
   end
 
+  def disapproved
+    @gyms = Gym.all.where(approved: false)
+  end
+
   def approve
     @gym = Gym.find(params[:id])
     @gym.approved = true
@@ -51,10 +55,21 @@ class GymsController < ApplicationController
     redirect_to @gym
   end
 
+  def my_gyms
+    @gyms = current_user.gyms
+  end
+
+  def destroy
+    @gym = Gym.find(params[:id])
+    @gym.delete
+    flash[:notice] = 'Gym deleted'
+    redirect_to my_gyms_path
+  end
+
   private
 
   def gym_params
-    params.require(:gym).permit(:name, :opening_time, :closing_time, :user_id,
+    params.require(:gym).permit(:name, :opening_time, :closing_time,
                                 address_attributes:
                                 %i[id address_type latitude longitude])
   end

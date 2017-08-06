@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :addresses, as: :model
   accepts_nested_attributes_for :addresses
-  has_one :gym
+  has_many :gyms
 end

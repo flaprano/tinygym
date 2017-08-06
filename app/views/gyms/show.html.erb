@@ -5,3 +5,7 @@
     <%= link_to 'Approve Gym', approve_gym_path, method: :patch %>
   <% end %>
 <% end %>
+
+<% if @gym.user == current_user %>
+  <%= link_to 'Delete', @gym, method: :delete %>
+<% end %>

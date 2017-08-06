@@ -1,20 +1,21 @@
 require 'rails_helper'
 
-feature 'gym_staff_aprove_gym' do
+feature 'Gym manager delete gym' do
   scenario 'successfully' do
     user_address = create(:user_address)
     user = user_address.model
-    user.email = 'user1@gympass.com'
+    user.gym_manager = true
     gym_address = create(:gym_address)
     gym = gym_address.model
+    gym.user = user
+    gym.save
 
     login_as(user)
     visit root_path
-    click_on 'Gyms for Approve'
+    click_on 'My Gyms'
     click_on gym.name
+    click_on 'Delete'
 
-    expect(GymMailer).to receive(:notify_gym_approved).with(gym).and_call_original
-
-    click_on 'Approve Gym'
+    expect(page).to have_content('Gym deleted')
   end
 end
