@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     get 'disapproved', on: :collection
     patch 'approve', on: :member
   end
+
+  resources :daily_tokens, only: [:create, :show]
 end

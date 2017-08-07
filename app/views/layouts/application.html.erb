@@ -24,9 +24,12 @@
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
         <%= link_to 'Gyms for Approve', disapproved_gyms_path %>
         <%= link_to 'My Gyms', my_gyms_path %>
+        <%= link_to 'Retrieve Daily Token', daily_tokens_path, method: :post %>
       <% elsif current_user.gym_manager? %>
         <%= link_to 'Register Gym', new_user_gym_path(current_user) %>
         <%= link_to 'My Gyms', my_gyms_path %>
+      <% else %>
+        <%= link_to 'Retrieve Daily Token', daily_tokens_path, method: :post %>
       <% end %>
       <%= link_to 'Gyms', gyms_path %>
       <%= link_to 'Edit User', edit_user_registration_path %>

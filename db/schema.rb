@@ -26,13 +26,11 @@ ActiveRecord::Schema.define(version: 20170806213548) do
 
   create_table "daily_tokens", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "gym_id"
     t.string "token", default: "", null: false
     t.boolean "used", default: false, null: false
     t.date "date_used"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["gym_id"], name: "index_daily_tokens_on_gym_id"
     t.index ["token"], name: "index_daily_tokens_on_token", unique: true
     t.index ["user_id"], name: "index_daily_tokens_on_user_id"
   end

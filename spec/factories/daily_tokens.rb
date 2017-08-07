@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :daily_token do
-    user nil
-    gym nil
-    token "MyString"
+    user
+    token ''
     used false
-    date_used "2017-08-06"
+    date_used Time.zone.today
   end
 end
