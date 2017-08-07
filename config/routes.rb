@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'my_gyms', to: 'gyms#my_gyms'
   resources :gyms, only: [:index, :show, :destroy] do
     get 'disapproved', on: :collection
-    patch 'approve', on: :member
+    post 'approve', on: :member
+    post 'use', on: :member
   end
 
   resources :daily_tokens, only: [:create, :show]

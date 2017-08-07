@@ -1,0 +1,5 @@
+<%= form_tag(use_gym_path, method: :post) do %>
+  <%= label_tag :token, 'Token' %>
+  <%= text_field_tag :token %>
+  <%= submit_tag 'Use Daily Token' %>
+<% end %>

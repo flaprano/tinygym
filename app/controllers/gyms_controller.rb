@@ -66,6 +66,27 @@ class GymsController < ApplicationController
     redirect_to my_gyms_path
   end
 
+  def use
+    @gym = Gym.find(params[:id])
+    @daily_token = DailyToken.where(token: params[:token]).first
+    if @daily_token.nil?
+      flash[:notice] = 'Daily token dont exist'
+    elsif @daily_token.user != current_user
+      flash[:notice] = 'Invalid daily token'
+    elsif @daily_token.used?
+      flash[:notice] = 'Daily token already used'
+    elsif @daily_token.created_at.to_date < Time.zone.today
+      flash[:notice] = 'Daily token expired'
+    else
+      @daily_token.used = true
+      @daily_token.date_used = Time.zone.today
+      @daily_token.save
+      flash[:notice] = 'Daily token used'
+    end
+
+    redirect_to @gym
+  end
+
   private
 
   def gym_params

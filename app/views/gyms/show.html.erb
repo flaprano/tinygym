@@ -2,10 +2,14 @@
 
 <% unless @gym.approved? %>
   <% if current_user.email.include? 'gympass.com' %>
-    <%= link_to 'Approve Gym', approve_gym_path, method: :patch %>
+    <%= link_to 'Approve Gym', approve_gym_path, method: :post %>
   <% end %>
 <% end %>
 
 <% if @gym.user == current_user %>
   <%= link_to 'Delete', @gym, method: :delete %>
+<% end %>
+
+<% unless current_user.gym_manager? %>
+ <%= render 'use_daily_token' %>
 <% end %>
