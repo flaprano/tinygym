@@ -1,24 +1,24 @@
-# README
+Project developed using Ruby 2.4.1 and Rails 5.1.2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Obs.: The focus of the project was the back-end. The front-end was not developed.
 
-Things you may want to cover:
+Gems used on this project:
 
-* Ruby version
+- bootstrap-sass (is on the project but not really used)
+- devise (for creation of model User and registration/login/logout of users)
+- geocoder (to find addresses by latitude/longitude)
+- nested_form_fields (to create the forms of model Address linked to the models User and Gym)
+- paperclip (is on the project but not really used)
+- rails-i18n (is on the project but not really used)
+- capybara (to test the project)
+- factory_girl_rails (to support a better creation of objects on the tests)
+- rspec-rails (to test the project)
+- simplecov (to verify the percentage of test cover of the project)
+- rubocop (to verify the quality of the code)
 
-* System dependencies
+How to run:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Clone the project
+- Run the command: bundle install
+- Run the command: rails db:migrate
+- Project is ready to run
